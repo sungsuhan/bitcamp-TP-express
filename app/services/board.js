@@ -1,10 +1,14 @@
 import db from '../models/index.js'
+import getDatabase from '../lambdas/getDatabase.js'
 
 export default function BoardService() {
-    const Board = db.board
+
+    const Board = db.Board
+    const dbo = getDatabase()
+    const dbConnect = dbo.getDb();
+
     return {
         write(req, _res) {
-            console.log(' ### 진행 4: 노드서버에 진입함 ' + JSON.stringify(req.body))
             new Board(req.body).save(() => {
                 return 'ok'
             })

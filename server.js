@@ -24,7 +24,7 @@ async function startServer() {
     app.use("/", index);
     app.use("/api", api);
     app.use("/basic", basic);
-    app.use("/board", _passport.authenticate('jwt', { session: false }), board);
+    app.use("/board", board);
     app.use("/todo", _passport.authenticate('jwt', { session: false }), todo);
     app.use("/user", user);
     app.use(morgan('dev'))
